@@ -4,10 +4,50 @@ import Header from "./components/Header/Header"
 import Formulario from './components/Formulario/Formulario';
 import MiOrg from './components/MiOrg';
 import Equipo from './components/Equipo';
+import Footer from './components/Footer';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false)
-  const [colaboradores, actualizarColaboradores] = useState([])
+  const [colaboradores, actualizarColaboradores] = useState([{
+    equipo: "Front End",
+    foto: "https://github.com/angelalondonos.png",
+    nombre: "Angela Londoño",
+    puesto: "Estudiante"
+  },{
+    equipo: "Front End",
+    foto: "https://github.com/harlandlohora.png",
+    nombre: "Harland Lohora",
+    puesto: "Instructor",
+    fav: true
+  },
+  {
+    equipo: "Programación",
+    foto: "https://github.com/genesysaluralatam.png",
+    nombre: "Genesys Rondón",
+    puesto: "Desarrolladora de software e instructora",
+    fav: false
+  },
+  {
+    equipo: "UX y Diseño",
+    foto: "https://github.com/JeanmarieAluraLatam.png",
+    nombre: "Jeanmarie Quijada",
+    puesto: "Instructora en Alura Latam",
+    fav: false
+  },
+  {
+    equipo: "Programación",
+    foto: "https://github.com/christianpva.png",
+    nombre: "Christian Velasco",
+    puesto: "Head de Alura e Instructor",
+    fav: false
+  },
+  {
+    equipo: "Innovación y Gestión",
+    foto: "https://github.com/JoseDarioGonzalezCha.png",
+    nombre: "Jose Gonzalez",
+    puesto: "Dev FullStack",
+    fav: false
+  }])
   //Ternario --> condicion ? seMuestra : noSeMuestra
   // condicion && seMuestra
 
@@ -22,6 +62,13 @@ function App() {
     //Spread operator
     actualizarColaboradores([...colaboradores, colaborador])
   }
+
+    //Eliminar colaborador
+    const eliminarColaborador = (id) => {
+      console.log("Eliminar colaborador", id)
+      const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
+      actualizarColaboradores(nuevosColaboradores)
+    }
 
 
   //Lista de equipos
@@ -80,10 +127,12 @@ function App() {
           datos={equipo}
           key={equipo.titulo}
           colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
-        />
+          eliminarColaborador={eliminarColaborador}
+
+          />
         )
       }
-
+      <Footer/>
 
 
     </div>
