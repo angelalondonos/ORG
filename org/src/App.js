@@ -7,12 +7,7 @@ import Equipo from './components/Equipo';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false)
-  const [colaboradores, actualizarColaboradores] = useState([{
-    equipo: "Front End",
-    foto: "https://github.com/harlandlohora.png",
-    nombre: "Harland Lohora",
-    puesto: "Instructor"
-  }])
+  const [colaboradores, actualizarColaboradores] = useState([])
   //Ternario --> condicion ? seMuestra : noSeMuestra
   // condicion && seMuestra
 
